@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Anamnese - Avaliação de Pele</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="main-container">
+        <!-- Element to be exported as PDF -->
+        <div id="pdf-content" class="form-container glass-effect">
+            
+            <header class="form-header">
+                <div class="header-icon">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <h1>Ficha de Anamnese</h1>
+                <h2>Avaliação de Pele</h2>
+                <p>Preencha os dados abaixo com atenção. Estas informações são sigilosas e fundamentais para um tratamento seguro e eficaz.</p>
+            </header>
+
+            <form id="anamnese-form" onsubmit="event.preventDefault();">
+                
+                <!-- Section 1: Dados Pessoais -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <i class="fa-regular fa-address-card"></i>
+                        <h3>Dados Pessoais</h3>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="input-group col-span-2">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="data_nascimento">Data de Nascimento</label>
+                            <input type="date" id="data_nascimento" name="data_nascimento" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="telefone">WhatsApp / Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="profissao">Profissão</label>
+                            <input type="text" id="profissao" name="profissao" placeholder="Sua profissão atual">
+                        </div>
+                        <div class="input-group col-span-2">
+                            <label for="endereco">Endereço Completo</label>
+                            <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro, Cidade">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Histórico de Saúde -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h3>Histórico de Saúde</h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group col-span-2">
+                            <label>Possui alguma doença preexistente? (Diabetes, Hipertensão, etc)</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="doenca" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="doenca" value="Não" checked> Não</label>
+                            </div>
+                            <input type="text" id="doenca_qual" name="doenca_qual" placeholder="Se sim, qual?" class="conditional-input mt-2">
+                        </div>
+
+                        <div class="input-group col-span-2">
+                            <label>Tem alguma alergia (cosméticos, alimentos, medicamentos)?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="alergia" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="alergia" value="Não" checked> Não</label>
+                            </div>
+                            <input type="text" id="alergia_qual" name="alergia_qual" placeholder="Se sim, quais?" class="conditional-input mt-2">
+                        </div>
+
+                        <div class="input-group col-span-2">
+                            <label>Faz uso de algum medicamento contínuo?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="medicamento" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="medicamento" value="Não" checked> Não</label>
+                            </div>
+                            <input type="text" id="medicamento_qual" name="medicamento_qual" placeholder="Se sim, quais?" class="conditional-input mt-2">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Gestante ou lactante?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="gestante" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="gestante" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Portador de marcapasso / pinos?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="marcapasso" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="marcapasso" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Hábitos de Vida -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-person-running"></i>
+                        <h3>Hábitos de Vida</h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Fumante?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="fumante" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="fumante" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Consome bebida alcoólica?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="alcool" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="alcool" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Pratica atividade física?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="exercicio" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="exercicio" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="alimentacao">Como é sua alimentação?</label>
+                            <select id="alimentacao" name="alimentacao">
+                                <option value="Boa">Boa</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Ruim">Ruim</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="agua">Ingestão de água diária</label>
+                            <select id="agua" name="agua">
+                                <option value="Menos de 1L">Menos de 1L</option>
+                                <option value="1 a 2L">1 a 2L</option>
+                                <option value="Mais de 2L">Mais de 2L</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="sono">Qualidade do sono</label>
+                            <select id="sono" name="sono">
+                                <option value="Boa">Boa (7h+ por noite)</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Ruim">Ruim (Insônia/poucas horas)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Cuidados com a Pele -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-droplet"></i>
+                        <h3>Cuidados com a Pele</h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group col-span-2">
+                            <label for="queixa">Qual sua queixa principal? (O que mais te incomoda?)</label>
+                            <textarea id="queixa" name="queixa" rows="3" placeholder="Ex: Manchas, acne, flacidez, rugas..."></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="tipo_pele">Qual seu tipo de pele?</label>
+                            <select id="tipo_pele" name="tipo_pele">
+                                <option value="Normal">Normal</option>
+                                <option value="Seca">Seca</option>
+                                <option value="Mista">Mista</option>
+                                <option value="Oleosa">Oleosa</option>
+                                <option value="Acneica">Acneica</option>
+                                <option value="Sensível">Sensível</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Usa protetor solar diariamente?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="protetor" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="protetor" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group col-span-2">
+                            <label for="produtos">Quais produtos usa diariamente no rosto?</label>
+                            <textarea id="produtos" name="produtos" rows="2" placeholder="Sabonete, Tônico, Vitamina C, Ácidos..."></textarea>
+                        </div>
+
+                        <div class="input-group col-span-2">
+                            <label for="tratamentos">Já realizou tratamentos estéticos faciais anteriores? Quais?</label>
+                            <textarea id="tratamentos" name="tratamentos" rows="2" placeholder="Limpeza de pele, peeling, botox, preenchimento..."></textarea>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Histórico de queloide / má cicatrização?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="queloide" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="queloide" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Costuma se expor ao sol com frequência?</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="sol" value="Sim"> Sim</label>
+                                <label class="radio-label"><input type="radio" name="sol" value="Não" checked> Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Assinatura -->
+                <section class="form-section signature-section">
+                    <p class="term-text">Declaro que as informações contidas neste formulário são verdadeiras e assumo inteira responsabilidade pelas mesmas. Estou ciente de que a omissão de dados pode comprometer o resultado e a segurança do tratamento estético.</p>
+                    
+                    <div class="signature-box">
+                        <div class="signature-line">
+                            <span class="signature-label">Assinatura do Paciente</span>
+                        </div>
+                        <div class="date-box">
+                            <label for="data_assinatura">Data:</label>
+                            <input type="date" id="data_assinatura" name="data_assinatura">
+                        </div>
+                    </div>
+                </section>
+
+            </form>
+        </div>
+
+        <!-- Floating Action Button for Export -->
+        <div class="action-container">
+            <button id="btn-export" class="btn-export">
+                <i class="fa-solid fa-file-pdf"></i>
+                Exportar para PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Gerando PDF...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
